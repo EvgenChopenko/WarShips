@@ -24,3 +24,5 @@ class Board(object):
     def get_vertical_frame(self):
         return self.__VERTICAL_FRAME
 
+    def get_cell_of_board(self, name_of_cell):
+        return self.__DICT_OF_DECK.get(name_of_cell)
