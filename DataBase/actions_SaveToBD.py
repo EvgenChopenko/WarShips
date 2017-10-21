@@ -21,8 +21,8 @@ def action_player_top_ten():
     return  rows
 #______________________________________________________
 def action_add():
-    schet=input('schet=' )
-    name=input('name= ')
+    schet=input('schet=' )# cюда значения из logirovan
+    name=input('name= ')# сюда значения из VIEW
 
     # if
 

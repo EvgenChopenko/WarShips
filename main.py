@@ -3,6 +3,7 @@ def main():
 
 import View.menu
 import View.actions_desk
+import View.log
 import DataBase.actions_SaveToBD as DB
 #todo :пример
 dict={'1,A':'К','2,A':'none'}
@@ -25,7 +26,13 @@ print(menu.call_actions(id='!D')('ABCDEFGHIJ',[1,2,3,4,5,6,7,8,9,10],dict))
 #print(show.show_desk('ABCDEFGHIJ',[1,2,3,4,5,6,7,8,9,10],dict))
 
 
-DB.creat_shema()
-DB.action_add()
-print(DB.action_playr_all())
-print(DB.action_player_top_ten())
+# DB.creat_shema()
+# DB.action_add()
+# print(DB.action_playr_all())
+# print(DB.action_player_top_ten())
+log = View.log.LOG()
+print(log.unique_coordinates('1,A'))
+print(log.unique_coordinates('1,A'))
+print(log.unique_coordinates('1,B'))
+print(log.unique_coordinates('1,A'))
+print(log.get_count())
