@@ -1,12 +1,17 @@
-# todo: Написать метод заполнения координат палуб корабля
+from game.CellOfBoard import CellOfBoard
+
+
 class Ship(object):
-    def __init__(self, numbers_of_deck):
-        self.__decks = [Deck() for i in range(numbers_of_deck)]
-        self.__is_alive_ship = True
+    def __init__(self):
+        self.__decks = list()
+        self.__is_alive_ship = None
+
+    def add_deck(self, deck):
+        self.__decks.append(deck)
 
     def make_damage(self, x, y):
         for item in self.__decks:
-            if item.is_destroyed(x, y):
+            if item.is_located(x, y):
                 item.set_state(False)
                 self.__check_status()
                 return True
@@ -28,25 +33,14 @@ class Ship(object):
 
 class Deck(object):
     def __init__(self):
-        self.__x = -1
-        self.__y = -1
+        self.__cell = CellOfBoard()
         self.__state = True
 
-    def __set_x(self, x):
-        if isinstance(x, int):
-            self.__x = x
+    def __set_cell(self, cell):
+        if isinstance(cell, CellOfBoard):
+            self.__cell = cell
         else:
             raise NotValidValue
-
-    def __set_y(self, y):
-        if isinstance(y, int):
-            self.__y = y
-        else:
-            raise NotValidValue
-
-    def set_x_y(self, x, y):
-        self.__set_x(x)
-        self.__set_y(y)
 
     def set_state(self, state):
         if isinstance(state, bool):
@@ -57,8 +51,8 @@ class Deck(object):
     def get_state(self):
         return self.__state
 
-    def is_destroyed(self, x, y):
-        return self.__x == x and self.__y == y
+    def is_located(self, cell):
+        return self.__cell.equal(cell)
 
 
 class NotValidState(Exception):
