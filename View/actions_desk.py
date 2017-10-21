@@ -1,11 +1,8 @@
 import sys
 class ViewDesk:
-<<<<<<< HEAD
-=======
     #def __init__(self):
 
 
->>>>>>> master
     def show_desk(self, Yabc, X, func):  # 10*10
         first = "%5s|" % ("")
         for i in Yabc:
@@ -36,11 +33,7 @@ class ViewDesk:
 Удачи сухопутный !!\n    
         
         """
-<<<<<<< HEAD
-        return s
-=======
         return s
 
 
 
->>>>>>> master
