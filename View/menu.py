@@ -34,16 +34,16 @@ class Menu(object):
         return s.func
 
     def call_name(self, id):  # возврашает имя заголовка для меню .
-        while True:
-            try:
-                s = self.actions[id]
-            except:
+
+
+        s = self.actions[id]
+
 
 
         return s.name
 
     def watch_command_run(self,id):# обробатывет запрос  (id) -> и возврашаеь вызов
-        input("Введите ваш следуюший ход :")
-        return self.call_name(id)()
+       # id=input("Введите ваш следуюший ход :")
+        return self.call_name(id)
 
 
