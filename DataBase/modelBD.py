@@ -2,9 +2,9 @@ import sqlite3
 #_____________________________________________________________________________________________________
 SQL_SELECT_ALL = """ SELECT ID, DataCreate, Schet, NamePlayer FROM WARSHIPS"""
 
-SQL_SELECT_TOP_TEN="""SELECT  COUNT(ID), DataCreate, Schet, NamePlayer FROM WARSHIPS
-GROUP BY author,DataCreate, Schet, NamePlayer
-ORDER BY COUNT(author) DESC LIMIT 10; """
+SQL_SELECT_TOP_TEN="""SELECT DataCreate, Schet, NamePlayer FROM WARSHIPS
+
+ORDER BY Schet DESC LIMIT 10; """
 
 
 #----------------------------------------------------------------------------------------------------------------
