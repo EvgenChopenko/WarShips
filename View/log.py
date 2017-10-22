@@ -9,24 +9,24 @@ a['1,A']=True
 """
 class LOG(object):
     def __init__(self):
-        self.log=dict()
-        self.count=0
-
-    def set_log(self,str):
-        self.count = self.count+1
-        self.log[str] = self.count
-
+        self.log=dict()#словарь id = кординаты : счетчик
+        self.count=0# счетчик
+#_________________________________________________________________________________________
+    def __set_log(self,str):
+        self.count = self.count+1# нарашивание счетчика
+        self.log[str] = self.count# запись в лог
+#_____________________________________________________________________________________________
     def unique_coordinates(self,str):# если значение нет то вернет TRUE,если оно есть то вернет False
         if(self.log.get(str)is None):
 
-            self.set_log(str)
+            self.__set_log(str)# запись только если этой кординаты не было
             return True
         else:
 
             return False
-
-    def get_log(self,str):
+#________________________________________________________________________________________
+    def get_log(self,str):# возврашет либо нуль либо порядковый номер лога
         return self.log.get(str)
-
-    def get_count(self):
+#__________________________________________________________________________________________
+    def get_count(self):# возврашает значения счетчика
         return self.count
