@@ -13,8 +13,8 @@ class LOG(object):
         self.count=0
 
     def set_log(self,str):
-        self.log[str]=1
         self.count = self.count+1
+        self.log[str] = self.count
 
     def unique_coordinates(self,str):# если значение нет то вернет TRUE,если оно есть то вернет False
         if(self.log.get(str)is None):
