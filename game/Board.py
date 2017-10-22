@@ -26,3 +26,6 @@ class Board(object):
 
     def get_cell_of_board(self, name_of_cell):
         return self.__DICT_OF_DECK.get(name_of_cell)
+
+    def get_names_of_cells(self):
+        return self.__DICT_OF_DECK.keys()

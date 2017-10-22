@@ -8,6 +8,7 @@ class Ship(object):
 
     def add_deck(self, deck):
         self.__decks.append(deck)
+        self.__is_alive_ship = True
 
     def make_damage(self, x, y):
         for item in self.__decks:
@@ -34,15 +35,9 @@ class Ship(object):
 
 
 class Deck(object):
-    def __init__(self):
-        self.__cell = CellOfBoard()
+    def __init__(self, cell):
+        self.__cell = cell
         self.__state = True
-
-    def __set_cell(self, cell):
-        if isinstance(cell, CellOfBoard):
-            self.__cell = cell
-        else:
-            raise NotValidValue
 
     def kill_deck(self):
         self.__cell.set_ship_is_destroyed_status()
@@ -56,7 +51,3 @@ class Deck(object):
 
     def is_located(self, cell):
         return self.__cell.equal(cell)
-
-
-class NotValidValue(Exception):
-    pass
