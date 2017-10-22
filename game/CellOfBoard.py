@@ -16,7 +16,7 @@ class CellOfBoard(object):
     def set_miss_shoot_status(self):
         self.__status = self.__STATUSES_OF_CELL.get('MISS_SHOOT')
 
-    def set_ship_is_damaged(self):
+    def set_ship_is_damaged_status(self):
         self.__status = self.__STATUSES_OF_CELL.get('SHIP_IS_DAMAGED')
 
     def set_ship_is_destroyed_status(self):

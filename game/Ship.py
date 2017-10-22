@@ -12,12 +12,13 @@ class Ship(object):
     def make_damage(self, x, y):
         for item in self.__decks:
             if item.is_located(x, y):
-                item.set_state(False)
-                self.__check_status()
+                item.wound()
+                if not self.__is_alive():
+                    self.__kill_ship()
                 return True
         return False
 
-    def __check_status(self):
+    def __is_alive(self):
         i = 0
         for item in self.__decks:
             if not item.get_state():
@@ -25,10 +26,11 @@ class Ship(object):
         if i == len(self.__decks):
             self.__is_alive_ship = False
 
-        return False
-
-    def is_alive(self):
         return self.__is_alive_ship
+
+    def __kill_ship(self):
+        for deck in self.__decks:
+            deck.set_ship_is_destroyed_status()
 
 
 class Deck(object):
@@ -42,21 +44,18 @@ class Deck(object):
         else:
             raise NotValidValue
 
-    def set_state(self, state):
-        if isinstance(state, bool):
-            self.__state = state
-        else:
-            raise NotValidState
+    def kill_deck(self):
+        self.__cell.set_ship_is_destroyed_status()
+
+    def wound(self):
+        self.__state = False
+        self.__cell.set_ship_is_damaged_status()
 
     def get_state(self):
         return self.__state
 
     def is_located(self, cell):
         return self.__cell.equal(cell)
-
-
-class NotValidState(Exception):
-    pass
 
 
 class NotValidValue(Exception):

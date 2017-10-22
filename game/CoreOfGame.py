@@ -13,7 +13,7 @@ class CoreOfGame(object):
         if not target_cell:
             pass        # todo: Заглушка! вставить отправку меседжа геймеру
         for ship in self.__ships:
-            if not ship.make_damage():
+            if not ship.wound():
                 target_cell.set_miss_shoot_status()
 # todo: Дописать=) 
 
