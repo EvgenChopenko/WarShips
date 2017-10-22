@@ -30,8 +30,11 @@ class Menu(object):
         return ('\n'.join(menu))
 
     def call_actions(self,id):# возврашает сылку выполняемой функции  по команде ввода.
-        s=self.actions[id]
-        return s.func
+        try:
+            s=self.actions[id]
+            return s.func
+        except:
+            return None
 
     def call_name(self, id):  # возврашает имя заголовка для меню .
 
@@ -44,6 +47,8 @@ class Menu(object):
 
     def watch_command_run(self,id):# обробатывет запрос  (id) -> и возврашаеь вызов
        # id=input("Введите ваш следуюший ход :")
-        return self.call_name(id)
-
+        try:
+            return self.call_name(id)
+        except :
+            return None
 
