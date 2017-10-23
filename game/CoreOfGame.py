@@ -6,7 +6,7 @@ from game.GeneratorOfShip import GeneratorOfShip
 
 class CoreOfGame(object):
     def __init__(self, configuration_of_ships):
-        self.__board = Board
+        self.__board = Board()
         self.__generator_of_ship = GeneratorOfShip(self.__board)
 
         self.__ships = list()

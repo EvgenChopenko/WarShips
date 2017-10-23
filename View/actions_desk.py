@@ -1,9 +1,14 @@
 import sys
+
 class ViewDesk:
-    #def __init__(self):
+    def __init__(self,board):
+        self.board=board
 
 #________________________________________________________________________________________________________________
-    def show_desk(self, Yabc, X, func):  # вывод поля
+    def show_desk(self):  # вывод поля
+        self.X=self.board.get_vertical_frame()
+        self.func=self.board.get_cell_of_board
+        self.Yabc=self.board.get_horizontal_frame()
         first = "%5s|" % ("")
         for i in Yabc:
             first = first + '%5s|' % (str(i))
@@ -11,7 +16,7 @@ class ViewDesk:
         for x in X:
             s = s + '%5d|' % x
             for y in Yabc:
-                s = s + "%5s|" % (func.get(str(x) + "," + str(y)))# заглушка на todo:пример
+                s = s + "%5s|" % (func(str(x) + "," + str(y)).visible())# заглушка на todo:пример
             s = s + "\n"
 
         return s

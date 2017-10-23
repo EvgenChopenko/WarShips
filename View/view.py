@@ -4,9 +4,9 @@ import View.log
 import re
 dict={'1,A':'К','2,A':'none'}# временный файл!
 class view:
-    def __init__(self):# объекты протипов класса создаються в конструкторе
+    def __init__(self,board):# объекты протипов класса создаються в конструкторе
         self.menu = View.menu.Menu()
-        self.actions = View.actions_desk.ViewDesk()
+        self.actions = View.actions_desk.ViewDesk(board)
         self.log = View.log.LOG()
 
 #______________________________________________________________________________________________________________________
@@ -42,16 +42,19 @@ class view:
 
         return text# найденный адресс
 #______________________________________________________________________________________________________________________
-    def _input(self):
+    def _input(self,func_shot):
         command = input("Ваш слеуюший ход: ")
         func = self.menu.call_actions(command)
         if (func is None):
             text = self.valid(command)
             if (text is not None):
                 if self.log.unique_coordinates(command):
-                   # запрос к боард if boar_true  тогда да ели не верни повтори ввод
+                   if(func_shot(command)) is None:
+                       return view._input(func)
+                   elif(func_shot(command)):
+                       return
 
-                   return (self.menu.call_actions(id='!D')(Yabc='ABCDEFGHIJ',X=[1,2,3,4,5,6,7,8,9,10],func=dict))# заглушка
+                   return (self.menu.call_actions())# заглушка
                 else:
                     return ('Повтори ввод! ')
 

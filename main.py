@@ -2,14 +2,16 @@ def main():
     pass
 
 import View.view
+from  game.CoreOfGame  import CoreOfGame
 # DB.creat_shema()
 # DB.action_add()
 # print(DB.action_playr_all())
 # print(DB.action_player_top_ten())
 
-
-v=View.view.view()
-v.initialization()
+configuration_of_ships = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1]
+games = CoreOfGame(configuration_of_ships)
+v=View.view.view(games.)
+#v.initialization()
 print(v._input())
 print(v._input())
 print(v._input())
