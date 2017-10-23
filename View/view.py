@@ -1,7 +1,10 @@
-import View.menu
+import re
+
 import View.actions_desk
 import View.log
-import re
+import View.menu
+
+
 #dict={'1,A':'К','2,A':'none'}# временный файл!
 class view:
     def __init__(self,board):# объекты протипов класса создаються в конструкторе
@@ -41,20 +44,21 @@ class view:
 
                 # text=None
 
-        return text# найденный адресс
+            return text  # найденный адресс
 #______________________________________________________________________________________________________________________
-    def _input(self,func_shot):
+
+    def _input(self, func_shot, func_c):
         command = input("Ваш слеуюший ход: ")
         func = self.menu.call_actions(command)
         if (func is None):
             text = self.valid(command)
             if (text is not None):
-                if self.log.unique_coordinates(command):
-                   if(func_shot(command)) is None:# вне поля
-                       return ("Выстрел вне поля")
-                   elif(func_shot(command)==False):#все мертвы
-                       return None
-                   elif (func_shot(command)):
+                if self.log.unique_coordinates(text):
+                    if (func_shot(text)) is False:  # вне поля
+                        return ("Выстрел вне поля")
+                    elif (func_shot(command) == False):  # все мертвы
+                        return func_c()
+                    elif (func_shot(text)):
                        return "Cледуюший ход"
 
 

@@ -23,9 +23,13 @@ class CoreOfGame(object):
         target_cell = self.__board.get_cell_of_board(name_cell_of_board)
         if not target_cell:
             return False
+        is_damage = False
         for ship in self.__ships:
-            if not ship.make_damage(target_cell):
-                target_cell.set_miss_shoot_status()
+            if ship.make_damage(target_cell):
+                is_damage = True
+                break
+        if not is_damage:
+            target_cell.set_miss_shoot_status()
         self.__inc_num_of_shoots()
         return True
 
@@ -46,7 +50,7 @@ class CoreOfGame(object):
     def is_dead_all_ships(self):
         is_alive_ships = False
         for ship in self.__ships:
-            is_alive_ship = is_alive_ship or ship.is_alive()
+            is_alive_ships = is_alive_ships or ship.is_alive()
         if is_alive_ships:
             return False
         return True

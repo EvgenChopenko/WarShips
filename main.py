@@ -16,8 +16,10 @@ v.initialization()
 print(v.showboard())
 # print(v._input())
 while True:
-    s=v._input(games.make_shoot)
-    if s is None:
+    s = v._input(games.make_shoot, games.is_dead_all_ships)
+    if s is True:
         break
-    print(s)
+
     print(v.showboard())
+
+print("Winner")
