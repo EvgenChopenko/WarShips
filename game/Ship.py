@@ -1,6 +1,3 @@
-from game.CellOfBoard import CellOfBoard
-
-
 class Ship(object):
     def __init__(self):
         self.__decks = list()
@@ -31,7 +28,7 @@ class Ship(object):
 
     def __kill_ship(self):
         for deck in self.__decks:
-            deck.set_ship_is_destroyed_status()
+            deck.kill_deck()
 
     def is_alive(self):
         return self.__is_alive_ship

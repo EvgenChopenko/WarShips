@@ -1,12 +1,14 @@
-from game.CellOfBoard import CellOfBoard
 from game.Board import Board
-from game.Ship import Ship
-from game.GeneratorOfShip import GeneratorOfShip
 import DataBase.actions_SaveToBD as db
+from game.Board import Board
+from game.GeneratorOfShip import GeneratorOfShip
+
+MAX_NUMBER_OF_SHOOTS = 50
 
 
 class CoreOfGame(object):
     def __init__(self, configuration_of_ships):
+        self.__num_of_shoots = 0
         self.__board = Board()
         self.__generator_of_ship = GeneratorOfShip(self.__board)
 
@@ -27,6 +29,12 @@ class CoreOfGame(object):
             if not ship.make_damage(target_cell):
                 target_cell.set_miss_shoot_status()
                 is_alive_ship = is_alive_ship or ship.is_alive()
-        if is_alive_ship:
+        if not is_alive_ship:
             return False
         return True
+
+    def inc_num_of_shoots(self):
+        self.__num_of_shoots += 1
+        if self.__num_of_shoots >= MAX_NUMBER_OF_SHOOTS:
+            return True
+        return False
