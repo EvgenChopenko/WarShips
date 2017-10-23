@@ -50,14 +50,16 @@ class view:
             text = self.valid(command)
             if (text is not None):
                 if self.log.unique_coordinates(command):
-                   if(func_shot(command)) is None:
-                       return False
-                   elif(func_shot(command)==False):
-                       return True
+                   if(func_shot(command)) is None:# вне поля
+                       return ("Выстрел вне поля")
+                   elif(func_shot(command)==False):#все мертвы
+                       return None
+                   elif (func_shot(command)):
+                       return "Cледуюший ход"
 
 
-                else:
-                    return ('Повтори ввод! ')
+            else:
+                return ("Повторите ввод")
 
 
         else:

@@ -15,5 +15,9 @@ v.initialization()
 
 print(v.showboard())
 # print(v._input())
-print(v._input(games.make_shoot))
-print(v.showboard())
+while True:
+    s=v._input(games.make_shoot)
+    if s is None:
+        break
+    print(s)
+    print(v.showboard())
