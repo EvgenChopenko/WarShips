@@ -6,9 +6,9 @@ class ViewDesk:
 
 #________________________________________________________________________________________________________________
     def show_desk(self):  # вывод поля
-        self.X=self.board.get_vertical_frame()
-        self.func=self.board.get_cell_of_board
-        self.Yabc=self.board.get_horizontal_frame()
+        X=self.board.get_vertical_frame()
+        func=self.board.get_cell_of_board
+        Yabc=self.board.get_horizontal_frame()
         first = "%5s|" % ("")
         for i in Yabc:
             first = first + '%5s|' % (str(i))

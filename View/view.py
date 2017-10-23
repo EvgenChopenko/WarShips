@@ -2,12 +2,13 @@ import View.menu
 import View.actions_desk
 import View.log
 import re
-dict={'1,A':'К','2,A':'none'}# временный файл!
+#dict={'1,A':'К','2,A':'none'}# временный файл!
 class view:
     def __init__(self,board):# объекты протипов класса создаються в конструкторе
         self.menu = View.menu.Menu()
         self.actions = View.actions_desk.ViewDesk(board)
         self.log = View.log.LOG()
+
 
 #______________________________________________________________________________________________________________________
     def initialization(self):# генерация меню !
@@ -50,17 +51,19 @@ class view:
             if (text is not None):
                 if self.log.unique_coordinates(command):
                    if(func_shot(command)) is None:
-                       return view._input(func)
-                   elif(func_shot(command)):
-                       return
+                       return False
+                   elif(func_shot(command)==False):
+                       return True
 
-                   return (self.menu.call_actions())# заглушка
+
                 else:
                     return ('Повтори ввод! ')
 
 
         else:
             return func()
+
+
 #_______________________________________________________________________________________________________________________
 #print(menu.show_menu())
 
@@ -76,3 +79,6 @@ class view:
 
 # #todo :пример
 # dict={'1,A':'К','2,A':'none'}
+#________________________________________________________-
+    def showboard(self):
+        return self.actions.show_desk()

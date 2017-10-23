@@ -10,9 +10,10 @@ from  game.CoreOfGame  import CoreOfGame
 
 configuration_of_ships = [4, 3, 3, 2, 2, 2, 1, 1, 1, 1]
 games = CoreOfGame(configuration_of_ships)
-v=View.view.view(games.)
-#v.initialization()
-print(v._input())
-print(v._input())
-print(v._input())
+v=View.view.view(games.get_board())
+v.initialization()
 
+print(v.showboard())
+# print(v._input())
+print(v._input(games.make_shoot))
+print(v.showboard())
