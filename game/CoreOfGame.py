@@ -1,4 +1,3 @@
-from game.Board import Board
 import DataBase.actions_SaveToBD as db
 from game.Board import Board
 from game.GeneratorOfShip import GeneratorOfShip
@@ -23,18 +22,31 @@ class CoreOfGame(object):
     def make_shoot(self, name_cell_of_board):
         target_cell = self.__board.get_cell_of_board(name_cell_of_board)
         if not target_cell:
-            return None
-        is_alive_ship = False
+            return False
         for ship in self.__ships:
             if not ship.make_damage(target_cell):
                 target_cell.set_miss_shoot_status()
-                is_alive_ship = is_alive_ship or ship.is_alive()
-        if not is_alive_ship:
-            return False
+        self.__inc_num_of_shoots()
         return True
 
-    def inc_num_of_shoots(self):
+    def __inc_num_of_shoots(self):
         self.__num_of_shoots += 1
         if self.__num_of_shoots >= MAX_NUMBER_OF_SHOOTS:
             return True
         return False
+
+    def __get_num_of_shoots(self):
+        return self.__num_of_shoots
+
+    def is_exhausted_all_attempts(self):
+        if self.__num_of_shoots >= MAX_NUMBER_OF_SHOOTS:
+            return True
+        return False
+
+    def is_dead_all_ships(self):
+        is_alive_ships = False
+        for ship in self.__ships:
+            is_alive_ship = is_alive_ship or ship.is_alive()
+        if is_alive_ships:
+            return False
+        return True
