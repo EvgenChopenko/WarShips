@@ -10,9 +10,9 @@ class Ship(object):
         self.__decks.append(deck)
         self.__is_alive_ship = True
 
-    def make_damage(self, x, y):
+    def make_damage(self, cell):
         for item in self.__decks:
-            if item.is_located(x, y):
+            if item.is_located(cell):
                 item.wound()
                 if not self.__is_alive():
                     self.__kill_ship()
@@ -32,6 +32,9 @@ class Ship(object):
     def __kill_ship(self):
         for deck in self.__decks:
             deck.set_ship_is_destroyed_status()
+
+    def is_alive(self):
+        return self.__is_alive_ship
 
 
 class Deck(object):
